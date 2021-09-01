@@ -8,6 +8,7 @@ function puts(error, stdout, stderr) { sys.puts(stdout); sys.puts(stderr); sys.p
 program
   .option('-u, --url <url>', 'The Database URL with credentials.', '')
   .option('-a, --actionPath <actionPath>', 'Path to an action file that contains JS for acting on each change.', process.cwd() + '/action.js')
+  .option('-p, --postActionPath <postActionPath>', 'Path to an action file that contains JS for processing data after a batch.', process.cwd() + '/postAction.js')
   .option('-u, --statePath <statePath>', 'Path to a state file used for continuing an interrupted subscription.', process.cwd() + '/state.json')
   .option('-s, --batchSize <batchSize>', 'Number of changes to process in a batch.', 100)
   .option('-b, --delayBetweenBatches <delayBetweenBatches>', 'Delay between each batch.', 0)
@@ -35,6 +36,7 @@ if (program.keys) {
 subscribe({
   url: program.url,
   actionPath: program.actionPath,
+  postActionPath: program.postActionPath,
   statePath: program.statePath,
   batchSize: program.batchSize,
   delayBetweenBatches: program.delayBetweenBatches,
