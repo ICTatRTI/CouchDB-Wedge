@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v1.2.1
+- Publish via actions.
+- More logging for subscribe.
+
 ## v1.2.0
 - Add a subscribe command for performing actions on a databases' changes feed
 
