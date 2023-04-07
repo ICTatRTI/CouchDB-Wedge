@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v1.2.2
+- Update Subscripte logging
+
 ## v1.2.1
 - Publish via actions.
 - More logging for subscribe.
