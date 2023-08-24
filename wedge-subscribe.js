@@ -10,9 +10,10 @@ program
   .option('-a, --actionPath <actionPath>', 'Path to an action file that contains JS for acting on each change.', process.cwd() + '/action.js')
   .option('-u, --statePath <statePath>', 'Path to a state file used for continuing an interrupted subscription.', process.cwd() + '/state.json')
   .option('-s, --batchSize <batchSize>', 'Number of changes to process in a batch.', 100)
-  .option('-b, --delayBetweenBatches <delayBetweenBatches>', 'Delay between each batch.', 0)
-  .option('-n, --delayWhenNothingToProcess <delayWhenNothingToProcess>', 'Delay when there is no new changes.', 60*1000)
+  .option('-b, --delayBetweenBatches <delayBetweenBatches>', 'Delay between each batch (in seconds).', 0)
+  .option('-n, --delayWhenNothingToProcess <delayWhenNothingToProcess>', 'Delay when there is no new changes (in seconds).', 60)
   .option('--verbose', 'Verbose mode', false)
+  .option('--safeMode', 'Safe mode', true)
 
 program.on('--help', function(){
   process.stdout.write('  Examples:')
@@ -39,7 +40,8 @@ subscribe({
   batchSize: program.batchSize,
   delayBetweenBatches: program.delayBetweenBatches,
   delayWhenNothingToProcess: program.delayWhenNothingToProcess,
-  verbose: program.verbose
+  verbose: program.verbose,
+  safeMode: program.safeMode
 }).catch(function(err) {
   if(err) {
     process.stderr.write(err)
