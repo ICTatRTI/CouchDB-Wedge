@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v1.2.4
+- Add subscribe 'safeMode' parameter and use seconds for delay parameters
+
+## v1.2.3
+- Update Release Instructions
+
 ## v1.2.2
 - Update Subscripte logging
 
