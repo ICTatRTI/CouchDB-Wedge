@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v1.2.5
+- Add subscribe `exitWhenNothingToProcess` parameter to exit when there are no changes to process. Default is false.
+
 ## v1.2.4
 - Add subscribe 'safeMode' parameter and use seconds for delay parameters
 

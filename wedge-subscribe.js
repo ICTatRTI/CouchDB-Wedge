@@ -3,15 +3,14 @@
 var program = require('commander');
 var subscribe = require('./lib/Subscribe.js')
 
-function puts(error, stdout, stderr) { sys.puts(stdout); sys.puts(stderr); sys.puts(error) } 
-
 program
   .option('-u, --url <url>', 'The Database URL with credentials.', '')
   .option('-a, --actionPath <actionPath>', 'Path to an action file that contains JS for acting on each change.', process.cwd() + '/action.js')
-  .option('-u, --statePath <statePath>', 'Path to a state file used for continuing an interrupted subscription.', process.cwd() + '/state.json')
+  .option('-p, --statePath <statePath>', 'Path to a state file used for continuing an interrupted subscription.', process.cwd() + '/state.json')
   .option('-s, --batchSize <batchSize>', 'Number of changes to process in a batch.', 100)
   .option('-b, --delayBetweenBatches <delayBetweenBatches>', 'Delay between each batch (in seconds).', 0)
   .option('-n, --delayWhenNothingToProcess <delayWhenNothingToProcess>', 'Delay when there is no new changes (in seconds).', 60)
+  .option('-x, --exitWhenNothingToProcess', 'Exit when there is no new changes.', false)
   .option('--verbose', 'Verbose mode', false)
   .option('--safeMode', 'Safe mode', true)
 
@@ -40,6 +39,7 @@ subscribe({
   batchSize: program.batchSize,
   delayBetweenBatches: program.delayBetweenBatches,
   delayWhenNothingToProcess: program.delayWhenNothingToProcess,
+  exitWhenNothingToProcess: program.exitWhenNothingToProcess,
   verbose: program.verbose,
   safeMode: program.safeMode
 }).catch(function(err) {
