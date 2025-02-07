@@ -11,4 +11,5 @@ program
   .command('push-json', 'Push an array of documents to a CouchDB database. Accepts STDIN over a pipe.')
   .command('doc-history', 'Revs with docs attached')
   .command('subscribe', 'Subscribe to the changes feed of a database and act on it.')
+  .command('subscribe-all-dbs', 'Subscribe to the changes feed of all databases and act on it.')
   .parse(process.argv);
